@@ -1,15 +1,14 @@
-import Vue from 'vue'
-import VueSocketio from 'vue-socket.io'
-import App from './App'
-import './assets/reset.css'
+import Vue from 'vue';
+import VueSocketio from 'vue-socket.io';
 
-Vue.config.productionTip = false
+import App from './App.vue';
 
-Vue.use(VueSocketio, 'http://localhost:1923')
+import './assets/reset.css';
 
-/* eslint-disable no-new */
+Vue.config.productionTip = false;
+
+Vue.use(VueSocketio, 'http://localhost:1923');
+
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App }
-})
+  render: h => h(App),
+}).$mount('#app');
