@@ -1,10 +1,12 @@
 const server = require('http').createServer();
 const io = require('socket.io')(server);
 
-let users = [];
+const { log } = console;
+
+const users = [];
 
 io.on('connection', (socket) => {
-  console.log('[connect]', socket.id);
+  log('[connect]', socket.id);
 
   const name = String(socket.id).slice(0, 4);
 
@@ -22,17 +24,17 @@ io.on('connection', (socket) => {
 
   socket.broadcast.emit('users', { users });
 
-  socket.on('disconnect', function () {
-    console.log('[disconnect]');
+  socket.on('disconnect', () => {
+    log('[disconnect]');
 
-    const index = users.findIndex(user => user.id === socket.id);
+    const index = users.findIndex((user) => user.id === socket.id);
     users.splice(index, 1);
 
-    socket.broadcast.emit('users', { users: users });
+    socket.broadcast.emit('users', { users });
   });
 
   socket.on('say', (data) => {
-    console.log('[say]', name, data);
+    log('[say]', name, data);
 
     socket.broadcast.emit('say', {
       name,
@@ -41,4 +43,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(1923);
+server.listen(1923, () => {
+  log('listening on *:1923');
+});

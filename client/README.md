@@ -1,31 +1,39 @@
 # Chat Client
 
 ## Project setup
+
 ```bash
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```bash
-yarn serve
+npm run serve
 ```
 
+<http://localhost:8080/>
+
 ### Compiles and minifies for production
+
 ```bash
-yarn build
+npm run build
 ```
 
 ### Run your tests
+
 ```bash
-yarn test
+npm test
 ```
 
 ### Lints and fixes files
+
 ```bash
-yarn lint
+npm run lint
 ```
 
 ### Run your unit tests
+
 ```bash
-yarn test:unit
+npm run test:unit
 ```
